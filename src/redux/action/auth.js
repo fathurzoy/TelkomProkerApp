@@ -14,7 +14,7 @@ export const signInAction = (form, navigation) => dispatch => {
 
         storeData('token_tel', {value: token});
         storeData('username', {value: form.username});
-        navigation.reset({index: 0, routes: [{name: 'Dashboard'}]});
+        navigation.reset({index: 0, routes: [{name: 'MainApp'}]});
         // console.log('success', res);
         dispatch(setLoading(false));
       } else {

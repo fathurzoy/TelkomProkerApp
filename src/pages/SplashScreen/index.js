@@ -10,7 +10,7 @@ const SplashScreen = ({navigation}) => {
       getData('token_tel').then(res => {
         console.log('token_tel: ', res);
         if (res) {
-          navigation.reset({index: 0, routes: [{name: 'Dashboard'}]});
+          navigation.reset({index: 0, routes: [{name: 'MainApp'}]});
         } else {
           navigation.replace('SignIn'); //page akan hilang
         }

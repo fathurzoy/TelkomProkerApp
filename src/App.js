@@ -6,6 +6,7 @@ import {Provider, useSelector} from 'react-redux';
 import {Loading} from './components/molecules';
 import store from './redux/store';
 import Router from './router';
+import {Provider as PaperProvider} from 'react-native-paper';
 
 const MainApp = () => {
   const {isLoading} = useSelector(state => state.globalReducer);
@@ -22,7 +23,9 @@ const App = () => {
   return (
     <>
       <Provider store={store}>
-        <MainApp />
+        <PaperProvider>
+          <MainApp />
+        </PaperProvider>
       </Provider>
     </>
   );
