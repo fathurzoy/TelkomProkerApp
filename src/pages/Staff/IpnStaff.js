@@ -25,7 +25,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import PdfExport from './PdfExport';
 import ExporExcelStaff from './ExcelExportStaff';
 
-const IpnRoute = ({showTambah, akses}) => {
+const IpnRoute = ({akses}) => {
   const [staffListMany, setStaffListMany] = useState([]);
   const [staffListLimit, setStaffListLimit] = useState([]);
   const [modalVisible, setModalVisible] = useState(false);
@@ -68,7 +68,6 @@ const IpnRoute = ({showTambah, akses}) => {
       ),
     ],
   });
-  const [pressTambah, setPressTambah] = showTambah;
 
   const {isLoading} = useSelector(state => state.globalReducer);
 
@@ -88,13 +87,12 @@ const IpnRoute = ({showTambah, akses}) => {
   }, [page, isLoading]);
 
   useEffect(() => {
-    // console.log(pressTambah);
-    if (pressTambah === true || modalVisible === true) {
+    if (modalVisible === true) {
       setModalVisible(true);
     } else {
       setModalVisible(false);
     }
-  }, [pressTambah, modalVisible]);
+  }, [modalVisible]);
 
   const editStaff = async rowData => {
     return Alert.alert(
@@ -145,7 +143,6 @@ const IpnRoute = ({showTambah, akses}) => {
       <ModalForm
         modal={[modalVisible, setModalVisible]}
         staffClickData={[staffClick, setStaffClick]}
-        showTambah={[pressTambah, setPressTambah]}
       />
       <View style={{height: 670}}>
         <View
@@ -477,9 +474,8 @@ const IpnRoute = ({showTambah, akses}) => {
 
 export default IpnRoute;
 
-const ModalForm = ({modal, staffClickData, showTambah}) => {
+const ModalForm = ({modal, staffClickData}) => {
   const [modalVisible, setModalVisible] = modal;
-  const [pressTambah, setPressTambah] = showTambah;
   const [staffClick, setStaffClick] = staffClickData;
   const dispatch = useDispatch();
 
@@ -525,7 +521,6 @@ const ModalForm = ({modal, staffClickData, showTambah}) => {
       dispatch(staff_create(form));
     }
     setModalVisible(!modalVisible);
-    setPressTambah(false);
   };
 
   return (
@@ -540,7 +535,6 @@ const ModalForm = ({modal, staffClickData, showTambah}) => {
       onRequestClose={() => {
         // Alert.alert('Modal has been closed.');
         setModalVisible(!modalVisible);
-        setPressTambah(false);
       }}>
       <ScrollView>
         <View style={styles.centeredView}>

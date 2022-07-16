@@ -137,11 +137,11 @@ const OnProgresProker = ({akses}) => {
     } else {
       getProkerfListBulan();
     }
-    if (filterMonth === null) {
-      getProkerfListLimit();
-    } else {
-      getProkerfListLimitBulan();
-    }
+    // if (filterMonth === null) {
+    //   getProkerfListLimit();
+    // } else {
+    //   getProkerfListLimitBulan();
+    // }
   }, [page, isLoading, filterMonth]);
 
   useEffect(() => {

@@ -356,21 +356,21 @@ const OnProgresProker = ({akses}) => {
       getProkerfListAdminBulan();
       getProkerfListIsBulan();
     }
-    if (filterMonth === null) {
-      getProkerfListAllLimit();
-      getProkerfListCmeLimit();
-      getProkerfListTransportLimit();
-      getProkerfListIpnLimit();
-      getProkerfListAdminLimit();
-      getProkerfListIsLimit();
-    } else {
-      getProkerfListAllLimitBulan();
-      getProkerfListCmeLimitBulan();
-      getProkerfListTransportLimitBulan();
-      getProkerfListIpnLimitBulan();
-      getProkerfListAdminLimitBulan();
-      getProkerfListIsLimitBulan();
-    }
+    // if (filterMonth === null) {
+    //   getProkerfListAllLimit();
+    //   getProkerfListCmeLimit();
+    //   getProkerfListTransportLimit();
+    //   getProkerfListIpnLimit();
+    //   getProkerfListAdminLimit();
+    //   getProkerfListIsLimit();
+    // } else {
+    //   getProkerfListAllLimitBulan();
+    //   getProkerfListCmeLimitBulan();
+    //   getProkerfListTransportLimitBulan();
+    //   getProkerfListIpnLimitBulan();
+    //   getProkerfListAdminLimitBulan();
+    //   getProkerfListIsLimitBulan();
+    // }
   }, [page, pageTransport, pageIpn, pageAdmin, pageIs, isLoading, filterMonth]);
 
   useEffect(() => {

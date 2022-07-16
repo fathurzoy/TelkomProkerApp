@@ -18,7 +18,7 @@ import {
 
 // Import HTML to PDF
 import RNHTMLtoPDF from 'react-native-html-to-pdf';
-let url = 'https://telkom-frontend.vercel.app/proker-export-excel/?';
+let url = 'https://telkom-frontend.vercel.app/proker-export-pdf/?';
 const PdfExportProker = ({
   dataProker,
   title,

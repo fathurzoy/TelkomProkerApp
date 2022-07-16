@@ -3,11 +3,24 @@ import {API_HOST} from '.';
 import {setLoading} from '../../redux/action';
 import {showMessage} from '../../utils';
 
-export const staff_read = async (page, limit) => {
+export const staff_read = async ({page, limit}) => {
   try {
     const result = await Axios.post(`${API_HOST.url}/staff_read`, {
       page: page,
       limit: limit,
+    });
+    // console.log('success', result.data);
+    // console.log('woy');
+    return result.data;
+  } catch (error) {
+    console.log('error', error);
+  }
+};
+export const staff_read_limit = async ({page, limit}) => {
+  try {
+    const result = await Axios.get(`${API_HOST.url}/staff_read`, {
+      page: page,
+      limit: null,
     });
     // console.log('success', result.data);
     // console.log('woy');

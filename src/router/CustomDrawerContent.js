@@ -8,8 +8,10 @@ import {
   TouchableOpacity,
   SafeAreaView,
   Image,
+  Alert,
 } from 'react-native';
 import {BarSolid, IcBack} from '../assets';
+import {showMessage} from '../utils';
 
 function CustomDrawerContent(props) {
   const [mainDrawer, setMainDrawer] = useState(true);
@@ -37,9 +39,23 @@ function CustomDrawerContent(props) {
   };
 
   const signOut = () => {
-    AsyncStorage.multiRemove(['username', 'token_tel']).then(() => {
-      props.navigation.reset({index: 0, routes: [{name: 'SignIn'}]});
-    });
+    return Alert.alert('Yakin?', 'Apakah anda yakin ingin logout?', [
+      // The "Yes" button
+      {
+        text: 'Yes',
+        onPress: () => {
+          AsyncStorage.multiRemove(['username', 'token_tel']).then(() => {
+            props.navigation.reset({index: 0, routes: [{name: 'SignIn'}]});
+          });
+          showMessage('Anda Telah Logout', 'success');
+        },
+      },
+      // The "No" button
+      // Does nothing but dismiss the dialog when tapped
+      {
+        text: 'No',
+      },
+    ]);
   };
 
   const logOut = async () => console.log('log out');

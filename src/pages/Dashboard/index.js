@@ -13,6 +13,8 @@ import {useNavigation} from '@react-navigation/native';
 import {getData} from '../../utils';
 
 const Dashboard = () => {
+  const navigation = useNavigation();
+
   const [username, setUsername] = useState();
 
   useEffect(() => {
@@ -29,7 +31,12 @@ const Dashboard = () => {
         {(username === 'cme' ||
           username === 'admin' ||
           username === 'super_admin') && (
-          <TouchableOpacity>
+          <TouchableOpacity
+            onPress={() =>
+              navigation.navigate('MainDrawer', {
+                screen: 'CME',
+              })
+            }>
             <View
               style={[
                 styles.cardContainer,
@@ -48,7 +55,12 @@ const Dashboard = () => {
         {(username === 'transport' ||
           username === 'admin' ||
           username === 'super_admin') && (
-          <TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate('MainDrawer', {
+                screen: 'TRANSPORT',
+              });
+            }}>
             <View
               style={[
                 styles.cardContainer,
@@ -67,7 +79,12 @@ const Dashboard = () => {
         {(username === 'ipn' ||
           username === 'admin' ||
           username === 'super_admin') && (
-          <TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate('MainDrawer', {
+                screen: 'IPN',
+              });
+            }}>
             <View
               style={[
                 styles.cardContainer,
@@ -86,7 +103,12 @@ const Dashboard = () => {
         {(username === 'admin' ||
           username === 'admin' ||
           username === 'super_admin') && (
-          <TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate('MainDrawer', {
+                screen: 'ADMIN',
+              });
+            }}>
             <View
               style={[
                 styles.cardContainer,
@@ -105,7 +127,12 @@ const Dashboard = () => {
         {(username === 'is' ||
           username === 'admin' ||
           username === 'super_admin') && (
-          <TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate('MainDrawer', {
+                screen: 'IS',
+              });
+            }}>
             <View
               style={[
                 styles.cardContainer,

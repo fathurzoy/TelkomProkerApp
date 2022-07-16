@@ -25,6 +25,7 @@ import IsRoute from './IsStaff';
 import AdminRoute from './AdminStaff';
 import IpnRoute from './IpnStaff';
 import TransportRoute from './TransportStaff';
+import ModalStaff from './ModalStaff';
 
 // const renderScene = SceneMap({
 // semua: () => <SemuaRoute />,
@@ -42,6 +43,7 @@ const Staff = () => {
   const [pressTambah, setPressTambah] = useState(false);
   const [username, setUsername] = useState();
   const [akses, setAkses] = useState();
+  const [modalVisible, setModalVisible] = useState(false);
 
   useEffect(() => {
     getData('username').then(res => {
@@ -82,6 +84,10 @@ const Staff = () => {
     <ScrollView horizontal={false} showsVerticalScrollIndicator>
       <View style={styles.container}>
         {/* <Header title={username} onPress={() => drawer.current.openDrawer()} /> */}
+        <ModalStaff
+          modal={[modalVisible, setModalVisible]}
+          showTambah={[pressTambah, setPressTambah]}
+        />
         <View
           style={{
             flexDirection: 'row',
@@ -91,7 +97,11 @@ const Staff = () => {
           }}>
           <Text style={styles.headerTitle}>STAFF</Text>
           {akses && (
-            <TouchableOpacity onPress={() => setPressTambah(true)}>
+            <TouchableOpacity
+              onPress={() => {
+                setPressTambah(true);
+                setModalVisible(true);
+              }}>
               <View>
                 <IconPlus />
               </View>
@@ -102,48 +112,14 @@ const Staff = () => {
           <TabView
             navigationState={{index, routes}}
             renderScene={SceneMap({
-              semua: () => (
-                <SemuaRoute
-                  showTambah={[pressTambah, setPressTambah]}
-                  username={username}
-                  akses={akses}
-                />
-              ),
-              cme: () => (
-                <CmeRoute
-                  showTambah={[pressTambah, setPressTambah]}
-                  username={username}
-                  akses={akses}
-                />
-              ),
+              semua: () => <SemuaRoute username={username} akses={akses} />,
+              cme: () => <CmeRoute username={username} akses={akses} />,
               transport: () => (
-                <TransportRoute
-                  showTambah={[pressTambah, setPressTambah]}
-                  username={username}
-                  akses={akses}
-                />
+                <TransportRoute username={username} akses={akses} />
               ),
-              ipn: () => (
-                <IpnRoute
-                  showTambah={[pressTambah, setPressTambah]}
-                  username={username}
-                  akses={akses}
-                />
-              ),
-              admin: () => (
-                <AdminRoute
-                  showTambah={[pressTambah, setPressTambah]}
-                  username={username}
-                  akses={akses}
-                />
-              ),
-              is: () => (
-                <IsRoute
-                  showTambah={[pressTambah, setPressTambah]}
-                  username={username}
-                  akses={akses}
-                />
-              ),
+              ipn: () => <IpnRoute username={username} akses={akses} />,
+              admin: () => <AdminRoute username={username} akses={akses} />,
+              is: () => <IsRoute username={username} akses={akses} />,
             })}
             onIndexChange={setIndex}
             renderTabBar={renderTabBar}

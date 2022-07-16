@@ -24,7 +24,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import PdfExport from './PdfExport';
 import ExporExcelStaff from './ExcelExportStaff';
 
-const TransportRoute = ({showTambah, akses}) => {
+const TransportRoute = ({akses}) => {
   const [staffListMany, setStaffListMany] = useState([]);
   const [staffListLimit, setStaffListLimit] = useState([]);
   const [modalVisible, setModalVisible] = useState(false);
@@ -67,7 +67,6 @@ const TransportRoute = ({showTambah, akses}) => {
       ),
     ],
   });
-  const [pressTambah, setPressTambah] = showTambah;
 
   const {isLoading} = useSelector(state => state.globalReducer);
 
@@ -87,13 +86,12 @@ const TransportRoute = ({showTambah, akses}) => {
   }, [page, isLoading]);
 
   useEffect(() => {
-    // console.log(pressTambah);
-    if (pressTambah === true || modalVisible === true) {
+    if (modalVisible === true) {
       setModalVisible(true);
     } else {
       setModalVisible(false);
     }
-  }, [pressTambah, modalVisible]);
+  }, [modalVisible]);
 
   const editStaff = async rowData => {
     return Alert.alert(
@@ -144,7 +142,6 @@ const TransportRoute = ({showTambah, akses}) => {
       <ModalForm
         modal={[modalVisible, setModalVisible]}
         staffClickData={[staffClick, setStaffClick]}
-        showTambah={[pressTambah, setPressTambah]}
       />
       <View style={{height: 670}}>
         <View
@@ -480,9 +477,8 @@ const TransportRoute = ({showTambah, akses}) => {
 
 export default TransportRoute;
 
-const ModalForm = ({modal, staffClickData, showTambah}) => {
+const ModalForm = ({modal, staffClickData}) => {
   const [modalVisible, setModalVisible] = modal;
-  const [pressTambah, setPressTambah] = showTambah;
   const [staffClick, setStaffClick] = staffClickData;
   const dispatch = useDispatch();
 
@@ -528,7 +524,6 @@ const ModalForm = ({modal, staffClickData, showTambah}) => {
       dispatch(staff_create(form));
     }
     setModalVisible(!modalVisible);
-    setPressTambah(false);
   };
 
   return (
@@ -543,7 +538,6 @@ const ModalForm = ({modal, staffClickData, showTambah}) => {
       onRequestClose={() => {
         // Alert.alert('Modal has been closed.');
         setModalVisible(!modalVisible);
-        setPressTambah(false);
       }}>
       <ScrollView>
         <View style={styles.centeredView}>
