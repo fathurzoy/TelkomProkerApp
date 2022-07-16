@@ -18,7 +18,7 @@ import {
 } from 'react-native';
 var RNFS = require('react-native-fs');
 import XLSX from 'xlsx';
-let url = 'https://telkom-frontend.vercel.app/proker-semua-export-pdf/?';
+let url = 'https://telkom-frontend.vercel.app/proker-semua-export-excel/?';
 
 const ExcelExportProker = ({dataProker, title, status, filterMonth}) => {
   const [datax, setDatax] = useState();
