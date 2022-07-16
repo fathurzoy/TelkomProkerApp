@@ -548,7 +548,7 @@ const ModalForm = ({modal, staffClickData}) => {
       <ScrollView>
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
-            <Text style={{marginBottom: 10}}>
+            <Text style={{marginBottom: 30, fontSize: 20, fontWeight: 'bold'}}>
               {staffClick == undefined ? 'TAMBAH' : 'EDIT'} STAFF
             </Text>
             <View style={{width: 250, marginBottom: 10}}>
