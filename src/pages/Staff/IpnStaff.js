@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {
+  ActivityIndicator,
   Alert,
   Modal,
   ScrollView,
@@ -314,7 +315,16 @@ const IpnRoute = ({akses}) => {
                     );
                   })
                 ) : (
-                  <Text>Loading</Text>
+                  <View
+                    style={{
+                      flexDirection: 'row',
+                      justifyContent: 'flex-start',
+                      alignItems: 'center',
+                    }}>
+                    <ActivityIndicator size="large" color="#1abc9c" />
+                    <Gap width={10} />
+                    <Text>Loading...</Text>
+                  </View>
                 )
               ) : Object.keys(staffListMany).length > 0 ? (
                 staffListMany?.query?.map((rowData, index) => {
@@ -422,7 +432,16 @@ const IpnRoute = ({akses}) => {
                   );
                 })
               ) : (
-                <Text>Loading</Text>
+                <View
+                  style={{
+                    flexDirection: 'row',
+                    justifyContent: 'flex-start',
+                    alignItems: 'center',
+                  }}>
+                  <ActivityIndicator size="large" color="#1abc9c" />
+                  <Gap width={10} />
+                  <Text>Loading...</Text>
+                </View>
               )}
             </Table>
           </View>
@@ -483,7 +502,7 @@ const ModalForm = ({modal, staffClickData}) => {
     id: '',
     nik: null,
     name: null,
-    divisi_id: 1,
+    divisi_id: '3',
     posisi: null,
     gender: 'laki-laki',
   });
@@ -507,7 +526,7 @@ const ModalForm = ({modal, staffClickData}) => {
         id: '',
         nik: null,
         name: null,
-        divisi_id: 1,
+        divisi_id: '3',
         posisi: null,
         gender: 'laki-laki',
       });
@@ -539,8 +558,8 @@ const ModalForm = ({modal, staffClickData}) => {
       <ScrollView>
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
-            <Text style={{marginBottom: 10}}>
-              {staffClick == undefined ? 'TAMBAH' : 'EDIT'} STAFF
+            <Text style={{marginBottom: 30, fontSize: 20, fontWeight: 'bold'}}>
+              EDIT STAFF
             </Text>
             <View style={{width: 250, marginBottom: 10}}>
               <TextInput

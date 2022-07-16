@@ -1,4 +1,5 @@
 import {
+  ActivityIndicator,
   Alert,
   Modal,
   ScrollView,
@@ -25,6 +26,8 @@ const Setting = () => {
   const [role, setRole] = useState();
   const {isLoading} = useSelector(state => state.globalReducer);
   const [modalVisible, setModalVisible] = useState(false);
+
+  const [timeOut, setTimeOut] = useState();
 
   // const getRequestList = async () => {
   //   let datas = await proker_find_many_status({status: 'request'});
@@ -68,6 +71,12 @@ const Setting = () => {
     });
   }, [isLoading]);
 
+  useEffect(() => {
+    if (userAdminId) {
+      setTimeOut(1);
+    }
+  }, [userAdminId]);
+
   const createTwoButtonAlert = () =>
     Alert.alert('Alert Title', 'My Alert Msg', [
       {
@@ -79,8 +88,8 @@ const Setting = () => {
     ]);
 
   return (
-    <ScrollView>
-      <View style={styles.container}>
+    <View style={styles.container}>
+      <ScrollView>
         <ModalForm
           tokenTel={tokenTel}
           usernameClick={usernameClick}
@@ -91,6 +100,18 @@ const Setting = () => {
         {/* <Header title={username} onPress={() => drawer.current.openDrawer()} /> */}
         <Text style={styles.headerTitle}>Setting</Text>
         <View style={styles.sectionCard}>
+          {timeOut !== 1 && (
+            <View
+              style={{
+                flexDirection: 'row',
+                justifyContent: 'flex-start',
+                alignItems: 'center',
+              }}>
+              <ActivityIndicator size="large" color="#1abc9c" />
+              <Gap width={10} />
+              <Text>Loading...</Text>
+            </View>
+          )}
           {(userAdminId === 2 || userAdminId === 1) && (
             <>
               <View
@@ -267,8 +288,8 @@ const Setting = () => {
             </>
           )}
         </View>
-      </View>
-    </ScrollView>
+      </ScrollView>
+    </View>
   );
 };
 
@@ -330,7 +351,9 @@ const ModalForm = ({modal, userClickData, tokenTel, usernameClick, role}) => {
       <ScrollView>
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
-            <Text style={{marginBottom: 10}}>EDIT USER</Text>
+            <Text style={{marginBottom: 30, fontSize: 20, fontWeight: 'bold'}}>
+              EDIT USER
+            </Text>
             <View style={{width: 250, marginBottom: 10}}>
               <TextInput
                 label="Username"
@@ -392,8 +415,9 @@ const styles = StyleSheet.create({
   },
   headerTitle: {
     fontSize: 20,
-    fontWeight: '600',
+    fontWeight: 'bold',
     textTransform: 'uppercase',
+    marginBottom: 12,
   },
   sectionCard: {
     alignItems: 'center',

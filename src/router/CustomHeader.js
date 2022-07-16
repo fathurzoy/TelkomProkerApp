@@ -186,7 +186,9 @@ const ModalForm = ({modal, dataRequest, dataId, username}) => {
       <ScrollView>
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
-            <Text style={{marginBottom: 10}}>Request Close</Text>
+            <Text style={{marginBottom: 15, fontSize: 20, fontWeight: 'bold'}}>
+              Request Close
+            </Text>
             {dataRequest &&
               dataRequest?.query?.map((rowData, index) => {
                 // console.log(rowData);

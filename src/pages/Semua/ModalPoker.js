@@ -23,7 +23,7 @@ const ModalProker = ({modal, showTambah}) => {
     plan: null,
     target: null,
     bulan: null,
-    divisi_id: 1,
+    divisi_id: '1',
   });
 
   useEffect(() => {
@@ -33,7 +33,7 @@ const ModalProker = ({modal, showTambah}) => {
       plan: null,
       target: null,
       bulan: null,
-      divisi_id: 1,
+      divisi_id: '1',
     });
   }, [modalVisible]);
 
@@ -64,7 +64,9 @@ const ModalProker = ({modal, showTambah}) => {
       <ScrollView>
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
-            <Text style={{marginBottom: 10}}>TAMBAH STAFF</Text>
+            <Text style={{marginBottom: 30, fontSize: 20, fontWeight: 'bold'}}>
+              TAMBAH PROKER
+            </Text>
             <View style={{width: 250, marginBottom: 10}}>
               <TextInput
                 label="Nama Program"

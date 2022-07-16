@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {
+  ActivityIndicator,
   Alert,
   Modal,
   ScrollView,
@@ -403,7 +404,16 @@ const CloseProker = ({akses}) => {
                   );
                 })
               ) : (
-                <Text>Loading</Text>
+                <View
+                  style={{
+                    flexDirection: 'row',
+                    justifyContent: 'flex-start',
+                    alignItems: 'center',
+                  }}>
+                  <ActivityIndicator size="large" color="#1abc9c" />
+                  <Gap width={10} />
+                  <Text>Loading...</Text>
+                </View>
               )}
             </Table>
           </View>
@@ -465,7 +475,7 @@ const ModalForm = ({modal, staffClickData}) => {
     plan: null,
     target: null,
     bulan: null,
-    divisi_id: 1,
+    divisi_id: '4',
   });
 
   const setDataForm = async () => {
@@ -490,7 +500,7 @@ const ModalForm = ({modal, staffClickData}) => {
         plan: null,
         target: null,
         bulan: null,
-        divisi_id: 1,
+        divisi_id: '4',
       });
     }
   }, [modalVisible]);
@@ -520,7 +530,9 @@ const ModalForm = ({modal, staffClickData}) => {
       <ScrollView>
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
-            <Text style={{marginBottom: 10}}>TAMBAH STAFF</Text>
+            <Text style={{marginBottom: 30, fontSize: 20, fontWeight: 'bold'}}>
+              EDIT PROKER
+            </Text>
             <View style={{width: 250, marginBottom: 10}}>
               <TextInput
                 label="Nama Program"

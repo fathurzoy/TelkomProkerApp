@@ -163,8 +163,9 @@ const styles = StyleSheet.create({
   },
   headerTitle: {
     fontSize: 20,
-    fontWeight: '600',
+    fontWeight: 'bold',
     textTransform: 'uppercase',
+    marginBottom: 12,
   },
   sectionCard: {
     alignItems: 'center',

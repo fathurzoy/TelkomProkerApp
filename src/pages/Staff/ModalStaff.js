@@ -33,7 +33,7 @@ const ModalStaff = ({modal, showTambah}) => {
     id: '',
     nik: null,
     name: null,
-    divisi_id: 1,
+    divisi_id: '1',
     posisi: null,
     gender: 'laki-laki',
   });
@@ -43,7 +43,7 @@ const ModalStaff = ({modal, showTambah}) => {
       id: '',
       nik: null,
       name: null,
-      divisi_id: 1,
+      divisi_id: '1',
       posisi: null,
       gender: 'laki-laki',
     });
@@ -76,7 +76,9 @@ const ModalStaff = ({modal, showTambah}) => {
       <ScrollView>
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
-            <Text style={{marginBottom: 10}}>TAMBAH</Text>
+            <Text style={{marginBottom: 30, fontSize: 20, fontWeight: 'bold'}}>
+              TAMBAH STAFF
+            </Text>
             <View style={{width: 250, marginBottom: 10}}>
               <TextInput
                 label="Nik"
