@@ -26,6 +26,7 @@ import AdminRoute from './AdminStaff';
 import IpnRoute from './IpnStaff';
 import TransportRoute from './TransportStaff';
 import ModalStaff from './ModalStaff';
+import Copyright from '../../components/molecules/Copyright';
 
 // const renderScene = SceneMap({
 // semua: () => <SemuaRoute />,
@@ -129,6 +130,7 @@ const Staff = () => {
           />
         </View>
       </View>
+      <Copyright />
     </ScrollView>
   );
 };

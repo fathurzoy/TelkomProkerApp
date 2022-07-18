@@ -16,6 +16,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import {getData, showMessage} from '../../utils';
 import SelectRole from '../../components/atom/Select/SelectRole';
 import {admin_update} from '../../config/API/login_api';
+import Copyright from '../../components/molecules/Copyright';
 
 const Setting = () => {
   const [userAdminId, setUserAdminId] = useState();
@@ -88,208 +89,211 @@ const Setting = () => {
     ]);
 
   return (
-    <View style={styles.container}>
-      <ScrollView>
-        <ModalForm
-          tokenTel={tokenTel}
-          usernameClick={usernameClick}
-          role={role}
-          modal={[modalVisible, setModalVisible]}
-          userClickData={[userClickDataId, setUserClickDataId]}
-        />
-        {/* <Header title={username} onPress={() => drawer.current.openDrawer()} /> */}
-        <Text style={styles.headerTitle}>Setting</Text>
-        <View style={styles.sectionCard}>
-          {timeOut !== 1 && (
-            <View
-              style={{
-                flexDirection: 'row',
-                justifyContent: 'flex-start',
-                alignItems: 'center',
-              }}>
-              <ActivityIndicator size="large" color="#1abc9c" />
-              <Gap width={10} />
-              <Text>Loading...</Text>
-            </View>
-          )}
-          {(userAdminId === 2 || userAdminId === 1) && (
-            <>
+    <>
+      <View style={styles.container}>
+        <ScrollView>
+          <ModalForm
+            tokenTel={tokenTel}
+            usernameClick={usernameClick}
+            role={role}
+            modal={[modalVisible, setModalVisible]}
+            userClickData={[userClickDataId, setUserClickDataId]}
+          />
+          {/* <Header title={username} onPress={() => drawer.current.openDrawer()} /> */}
+          <Text style={styles.headerTitle}>Setting</Text>
+          <View style={styles.sectionCard}>
+            {timeOut !== 1 && (
               <View
-                style={[
-                  styles.cardContainer,
-                  styles.shadowProp,
-                  styles.buttonShadow,
-                ]}>
-                <View style={styles.headerCard}>
-                  <Text style={styles.textHeader}>CME</Text>
-                </View>
-                <View style={styles.bottomCard}>
-                  <Text style={styles.textBottom}>Username : cme</Text>
-                  <Text style={styles.textBottom}>Role : cme</Text>
-                  <Gap height={50} />
-                  <View
-                    style={{
-                      position: 'absolute',
-                      bottom: 12,
-                      right: 15,
-                    }}>
-                    <TouchableOpacity
-                      onPress={() => {
-                        setUserClickDataId(2);
-                        setUsernameClick('cme');
-                        setRole(2);
-                        setModalVisible(!modalVisible);
+                style={{
+                  flexDirection: 'row',
+                  justifyContent: 'flex-start',
+                  alignItems: 'center',
+                }}>
+                <ActivityIndicator size="large" color="#1abc9c" />
+                <Gap width={10} />
+                <Text>Loading...</Text>
+              </View>
+            )}
+            {(userAdminId === 2 || userAdminId === 1) && (
+              <>
+                <View
+                  style={[
+                    styles.cardContainer,
+                    styles.shadowProp,
+                    styles.buttonShadow,
+                  ]}>
+                  <View style={styles.headerCard}>
+                    <Text style={styles.textHeader}>CME</Text>
+                  </View>
+                  <View style={styles.bottomCard}>
+                    <Text style={styles.textBottom}>Username : cme</Text>
+                    <Text style={styles.textBottom}>Role : cme</Text>
+                    <Gap height={50} />
+                    <View
+                      style={{
+                        position: 'absolute',
+                        bottom: 12,
+                        right: 15,
                       }}>
-                      <IconEdit />
-                    </TouchableOpacity>
+                      <TouchableOpacity
+                        onPress={() => {
+                          setUserClickDataId(2);
+                          setUsernameClick('cme');
+                          setRole(2);
+                          setModalVisible(!modalVisible);
+                        }}>
+                        <IconEdit />
+                      </TouchableOpacity>
+                    </View>
                   </View>
                 </View>
-              </View>
-            </>
-          )}
-          {(userAdminId === 3 || userAdminId === 1) && (
-            <>
-              <View
-                style={[
-                  styles.cardContainer,
-                  styles.shadowProp,
-                  styles.buttonShadow,
-                ]}>
-                <View style={styles.headerCard}>
-                  <Text style={styles.textHeader}>TRANSPORT</Text>
-                </View>
-                <View style={styles.bottomCard}>
-                  <Text style={styles.textBottom}>Username : transport</Text>
-                  <Text style={styles.textBottom}>Role : transport</Text>
-                  <Gap height={50} />
-                  <View
-                    style={{
-                      position: 'absolute',
-                      bottom: 12,
-                      right: 15,
-                    }}>
-                    <TouchableOpacity
-                      onPress={() => {
-                        setUserClickDataId(3);
-                        setUsernameClick('transport');
-                        setRole(3);
-                        setModalVisible(!modalVisible);
+              </>
+            )}
+            {(userAdminId === 3 || userAdminId === 1) && (
+              <>
+                <View
+                  style={[
+                    styles.cardContainer,
+                    styles.shadowProp,
+                    styles.buttonShadow,
+                  ]}>
+                  <View style={styles.headerCard}>
+                    <Text style={styles.textHeader}>TRANSPORT</Text>
+                  </View>
+                  <View style={styles.bottomCard}>
+                    <Text style={styles.textBottom}>Username : transport</Text>
+                    <Text style={styles.textBottom}>Role : transport</Text>
+                    <Gap height={50} />
+                    <View
+                      style={{
+                        position: 'absolute',
+                        bottom: 12,
+                        right: 15,
                       }}>
-                      <IconEdit />
-                    </TouchableOpacity>
+                      <TouchableOpacity
+                        onPress={() => {
+                          setUserClickDataId(3);
+                          setUsernameClick('transport');
+                          setRole(3);
+                          setModalVisible(!modalVisible);
+                        }}>
+                        <IconEdit />
+                      </TouchableOpacity>
+                    </View>
                   </View>
                 </View>
-              </View>
-            </>
-          )}
-          {(userAdminId === 4 || userAdminId === 1) && (
-            <>
-              <View
-                style={[
-                  styles.cardContainer,
-                  styles.shadowProp,
-                  styles.buttonShadow,
-                ]}>
-                <View style={styles.headerCard}>
-                  <Text style={styles.textHeader}>IPN</Text>
-                </View>
-                <View style={styles.bottomCard}>
-                  <Text style={styles.textBottom}>Username : ipn</Text>
-                  <Text style={styles.textBottom}>Role : ipn</Text>
-                  <Gap height={50} />
-                  <View
-                    style={{
-                      position: 'absolute',
-                      bottom: 12,
-                      right: 15,
-                    }}>
-                    <TouchableOpacity
-                      onPress={() => {
-                        setUserClickDataId(4);
-                        setUsernameClick('ipn');
-                        setRole(4);
-                        setModalVisible(!modalVisible);
+              </>
+            )}
+            {(userAdminId === 4 || userAdminId === 1) && (
+              <>
+                <View
+                  style={[
+                    styles.cardContainer,
+                    styles.shadowProp,
+                    styles.buttonShadow,
+                  ]}>
+                  <View style={styles.headerCard}>
+                    <Text style={styles.textHeader}>IPN</Text>
+                  </View>
+                  <View style={styles.bottomCard}>
+                    <Text style={styles.textBottom}>Username : ipn</Text>
+                    <Text style={styles.textBottom}>Role : ipn</Text>
+                    <Gap height={50} />
+                    <View
+                      style={{
+                        position: 'absolute',
+                        bottom: 12,
+                        right: 15,
                       }}>
-                      <IconEdit />
-                    </TouchableOpacity>
+                      <TouchableOpacity
+                        onPress={() => {
+                          setUserClickDataId(4);
+                          setUsernameClick('ipn');
+                          setRole(4);
+                          setModalVisible(!modalVisible);
+                        }}>
+                        <IconEdit />
+                      </TouchableOpacity>
+                    </View>
                   </View>
                 </View>
-              </View>
-            </>
-          )}
-          {(userAdminId === 5 || userAdminId === 1) && (
-            <>
-              <View
-                style={[
-                  styles.cardContainer,
-                  styles.shadowProp,
-                  styles.buttonShadow,
-                ]}>
-                <View style={styles.headerCard}>
-                  <Text style={styles.textHeader}>ADMIN</Text>
-                </View>
-                <View style={styles.bottomCard}>
-                  <Text style={styles.textBottom}>Username : admin</Text>
-                  <Text style={styles.textBottom}>Role : admin</Text>
-                  <Gap height={50} />
-                  <View
-                    style={{
-                      position: 'absolute',
-                      bottom: 12,
-                      right: 15,
-                    }}>
-                    <TouchableOpacity
-                      onPress={() => {
-                        setUserClickDataId(5);
-                        setUsernameClick('admin');
-                        setRole(5);
-                        setModalVisible(!modalVisible);
+              </>
+            )}
+            {(userAdminId === 5 || userAdminId === 1) && (
+              <>
+                <View
+                  style={[
+                    styles.cardContainer,
+                    styles.shadowProp,
+                    styles.buttonShadow,
+                  ]}>
+                  <View style={styles.headerCard}>
+                    <Text style={styles.textHeader}>ADMIN</Text>
+                  </View>
+                  <View style={styles.bottomCard}>
+                    <Text style={styles.textBottom}>Username : admin</Text>
+                    <Text style={styles.textBottom}>Role : admin</Text>
+                    <Gap height={50} />
+                    <View
+                      style={{
+                        position: 'absolute',
+                        bottom: 12,
+                        right: 15,
                       }}>
-                      <IconEdit />
-                    </TouchableOpacity>
+                      <TouchableOpacity
+                        onPress={() => {
+                          setUserClickDataId(5);
+                          setUsernameClick('admin');
+                          setRole(5);
+                          setModalVisible(!modalVisible);
+                        }}>
+                        <IconEdit />
+                      </TouchableOpacity>
+                    </View>
                   </View>
                 </View>
-              </View>
-            </>
-          )}
-          {(userAdminId === 6 || userAdminId === 1) && (
-            <>
-              <View
-                style={[
-                  styles.cardContainer,
-                  styles.shadowProp,
-                  styles.buttonShadow,
-                ]}>
-                <View style={styles.headerCard}>
-                  <Text style={styles.textHeader}>IS</Text>
-                </View>
-                <View style={styles.bottomCard}>
-                  <Text style={styles.textBottom}>Username : is</Text>
-                  <Text style={styles.textBottom}>Role : is</Text>
-                  <Gap height={50} />
-                  <View
-                    style={{
-                      position: 'absolute',
-                      bottom: 12,
-                      right: 15,
-                    }}>
-                    <TouchableOpacity
-                      onPress={() => {
-                        setUserClickDataId(6);
-                        setUsernameClick('is');
-                        setRole(6);
-                        setModalVisible(!modalVisible);
+              </>
+            )}
+            {(userAdminId === 6 || userAdminId === 1) && (
+              <>
+                <View
+                  style={[
+                    styles.cardContainer,
+                    styles.shadowProp,
+                    styles.buttonShadow,
+                  ]}>
+                  <View style={styles.headerCard}>
+                    <Text style={styles.textHeader}>IS</Text>
+                  </View>
+                  <View style={styles.bottomCard}>
+                    <Text style={styles.textBottom}>Username : is</Text>
+                    <Text style={styles.textBottom}>Role : is</Text>
+                    <Gap height={50} />
+                    <View
+                      style={{
+                        position: 'absolute',
+                        bottom: 12,
+                        right: 15,
                       }}>
-                      <IconEdit />
-                    </TouchableOpacity>
+                      <TouchableOpacity
+                        onPress={() => {
+                          setUserClickDataId(6);
+                          setUsernameClick('is');
+                          setRole(6);
+                          setModalVisible(!modalVisible);
+                        }}>
+                        <IconEdit />
+                      </TouchableOpacity>
+                    </View>
                   </View>
                 </View>
-              </View>
-            </>
-          )}
-        </View>
-      </ScrollView>
-    </View>
+              </>
+            )}
+          </View>
+        </ScrollView>
+      </View>
+      <Copyright />
+    </>
   );
 };
 

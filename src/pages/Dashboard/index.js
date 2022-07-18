@@ -11,6 +11,7 @@ import Header from '../../components/molecules/Header';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {useNavigation} from '@react-navigation/native';
 import {getData} from '../../utils';
+import Copyright from '../../components/molecules/Copyright';
 
 const Dashboard = () => {
   const navigation = useNavigation();
@@ -24,132 +25,135 @@ const Dashboard = () => {
   }, [username]);
 
   return (
-    <View style={styles.container}>
-      {/* <Header title={username} onPress={() => drawer.current.openDrawer()} /> */}
-      <Text style={styles.headerTitle}>Dashboard</Text>
-      <View style={styles.sectionCard}>
-        {(username === 'cme' ||
-          username === 'admin' ||
-          username === 'super_admin') && (
-          <TouchableOpacity
-            onPress={() =>
-              navigation.navigate('MainDrawer', {
-                screen: 'CME',
-              })
-            }>
-            <View
-              style={[
-                styles.cardContainer,
-                styles.shadowProp,
-                styles.buttonShadow,
-              ]}>
-              <View style={styles.headerCard}>
-                <Text style={styles.textHeader}>CME</Text>
+    <>
+      <View style={styles.container}>
+        {/* <Header title={username} onPress={() => drawer.current.openDrawer()} /> */}
+        <Text style={styles.headerTitle}>Dashboard</Text>
+        <View style={styles.sectionCard}>
+          {(username === 'cme' ||
+            username === 'admin' ||
+            username === 'super_admin') && (
+            <TouchableOpacity
+              onPress={() =>
+                navigation.navigate('MainDrawer', {
+                  screen: 'CME',
+                })
+              }>
+              <View
+                style={[
+                  styles.cardContainer,
+                  styles.shadowProp,
+                  styles.buttonShadow,
+                ]}>
+                <View style={styles.headerCard}>
+                  <Text style={styles.textHeader}>CME</Text>
+                </View>
+                <View style={styles.bottomCard}>
+                  <Text style={styles.textBottom}>View details</Text>
+                </View>
               </View>
-              <View style={styles.bottomCard}>
-                <Text style={styles.textBottom}>View details</Text>
+            </TouchableOpacity>
+          )}
+          {(username === 'transport' ||
+            username === 'admin' ||
+            username === 'super_admin') && (
+            <TouchableOpacity
+              onPress={() => {
+                navigation.navigate('MainDrawer', {
+                  screen: 'TRANSPORT',
+                });
+              }}>
+              <View
+                style={[
+                  styles.cardContainer,
+                  styles.shadowProp,
+                  styles.buttonShadow,
+                ]}>
+                <View style={styles.headerCard}>
+                  <Text style={styles.textHeader}>TRANSPORT</Text>
+                </View>
+                <View style={styles.bottomCard}>
+                  <Text style={styles.textBottom}>View details</Text>
+                </View>
               </View>
-            </View>
-          </TouchableOpacity>
-        )}
-        {(username === 'transport' ||
-          username === 'admin' ||
-          username === 'super_admin') && (
-          <TouchableOpacity
-            onPress={() => {
-              navigation.navigate('MainDrawer', {
-                screen: 'TRANSPORT',
-              });
-            }}>
-            <View
-              style={[
-                styles.cardContainer,
-                styles.shadowProp,
-                styles.buttonShadow,
-              ]}>
-              <View style={styles.headerCard}>
-                <Text style={styles.textHeader}>TRANSPORT</Text>
+            </TouchableOpacity>
+          )}
+          {(username === 'ipn' ||
+            username === 'admin' ||
+            username === 'super_admin') && (
+            <TouchableOpacity
+              onPress={() => {
+                navigation.navigate('MainDrawer', {
+                  screen: 'IPN',
+                });
+              }}>
+              <View
+                style={[
+                  styles.cardContainer,
+                  styles.shadowProp,
+                  styles.buttonShadow,
+                ]}>
+                <View style={styles.headerCard}>
+                  <Text style={styles.textHeader}>IPN</Text>
+                </View>
+                <View style={styles.bottomCard}>
+                  <Text style={styles.textBottom}>View details</Text>
+                </View>
               </View>
-              <View style={styles.bottomCard}>
-                <Text style={styles.textBottom}>View details</Text>
+            </TouchableOpacity>
+          )}
+          {(username === 'admin' ||
+            username === 'admin' ||
+            username === 'super_admin') && (
+            <TouchableOpacity
+              onPress={() => {
+                navigation.navigate('MainDrawer', {
+                  screen: 'ADMIN',
+                });
+              }}>
+              <View
+                style={[
+                  styles.cardContainer,
+                  styles.shadowProp,
+                  styles.buttonShadow,
+                ]}>
+                <View style={styles.headerCard}>
+                  <Text style={styles.textHeader}>ADMIN</Text>
+                </View>
+                <View style={styles.bottomCard}>
+                  <Text style={styles.textBottom}>View details</Text>
+                </View>
               </View>
-            </View>
-          </TouchableOpacity>
-        )}
-        {(username === 'ipn' ||
-          username === 'admin' ||
-          username === 'super_admin') && (
-          <TouchableOpacity
-            onPress={() => {
-              navigation.navigate('MainDrawer', {
-                screen: 'IPN',
-              });
-            }}>
-            <View
-              style={[
-                styles.cardContainer,
-                styles.shadowProp,
-                styles.buttonShadow,
-              ]}>
-              <View style={styles.headerCard}>
-                <Text style={styles.textHeader}>IPN</Text>
+            </TouchableOpacity>
+          )}
+          {(username === 'is' ||
+            username === 'admin' ||
+            username === 'super_admin') && (
+            <TouchableOpacity
+              onPress={() => {
+                navigation.navigate('MainDrawer', {
+                  screen: 'IS',
+                });
+              }}>
+              <View
+                style={[
+                  styles.cardContainer,
+                  styles.shadowProp,
+                  styles.buttonShadow,
+                ]}>
+                <View style={styles.headerCard}>
+                  <Text style={styles.textHeader}>IS</Text>
+                </View>
+                <View style={styles.bottomCard}>
+                  <Text style={styles.textBottom}>View details</Text>
+                </View>
               </View>
-              <View style={styles.bottomCard}>
-                <Text style={styles.textBottom}>View details</Text>
-              </View>
-            </View>
-          </TouchableOpacity>
-        )}
-        {(username === 'admin' ||
-          username === 'admin' ||
-          username === 'super_admin') && (
-          <TouchableOpacity
-            onPress={() => {
-              navigation.navigate('MainDrawer', {
-                screen: 'ADMIN',
-              });
-            }}>
-            <View
-              style={[
-                styles.cardContainer,
-                styles.shadowProp,
-                styles.buttonShadow,
-              ]}>
-              <View style={styles.headerCard}>
-                <Text style={styles.textHeader}>ADMIN</Text>
-              </View>
-              <View style={styles.bottomCard}>
-                <Text style={styles.textBottom}>View details</Text>
-              </View>
-            </View>
-          </TouchableOpacity>
-        )}
-        {(username === 'is' ||
-          username === 'admin' ||
-          username === 'super_admin') && (
-          <TouchableOpacity
-            onPress={() => {
-              navigation.navigate('MainDrawer', {
-                screen: 'IS',
-              });
-            }}>
-            <View
-              style={[
-                styles.cardContainer,
-                styles.shadowProp,
-                styles.buttonShadow,
-              ]}>
-              <View style={styles.headerCard}>
-                <Text style={styles.textHeader}>IS</Text>
-              </View>
-              <View style={styles.bottomCard}>
-                <Text style={styles.textBottom}>View details</Text>
-              </View>
-            </View>
-          </TouchableOpacity>
-        )}
+            </TouchableOpacity>
+          )}
+        </View>
       </View>
-    </View>
+      <Copyright />
+    </>
   );
 };
 

@@ -10,6 +10,7 @@ import {
 } from 'react-native';
 import {SceneMap, TabBar, TabView} from 'react-native-tab-view';
 import {IconPlus} from '../../assets/Icon';
+import Copyright from '../../components/molecules/Copyright';
 import {getData} from '../../utils';
 import CloseProker from './CloseProker';
 import ModalProker from './ModalPoker';
@@ -109,6 +110,7 @@ const Cme = () => {
           />
         </View>
       </View>
+      <Copyright />
     </ScrollView>
   );
 };
